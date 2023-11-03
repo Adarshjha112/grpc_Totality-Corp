@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package userservice;
+
+service UserService {
+    rpc GetUserByID (GetUserRequest) returns (UserResponse);
+    rpc GetUsersByIDs (GetUsersRequest) returns (stream UserResponse);
+}
+
+message GetUserRequest {
+    int32 user_id = 1;
+}
+
+message GetUsersRequest {
+    repeated int32 user_ids = 1;
+}
+
+message UserResponse {
+    int32 id = 1;
+    string fname = 2;
+    string city = 3;
+    int64 phone = 4;
+    float height = 5;
+    bool married = 6;
+}
